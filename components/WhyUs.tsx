@@ -87,10 +87,7 @@ export default function WhyUs() {
             return (
               <div
                 key={i}
-                className="bg-[#0f0f0f] border border-[#1c1c1c] rounded-2xl p-6 group transition-all duration-300 hover:-translate-y-1"
-                style={{
-                  ["--accent" as string]: feat.accent,
-                }}
+                className="relative bg-[#0f0f0f] border border-[#1c1c1c] rounded-2xl p-6 group transition-all duration-300 hover:-translate-y-1 overflow-hidden"
               >
                 {/* Hover top accent */}
                 <div
@@ -98,7 +95,7 @@ export default function WhyUs() {
                   style={{ background: `linear-gradient(90deg, ${feat.accent}, transparent)` }}
                 />
                 <div
-                  className="w-13 h-13 w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-all duration-300 group-hover:scale-110"
+                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-all duration-300 group-hover:scale-110"
                   style={{ background: feat.iconBg }}
                 >
                   <Icon size={24} style={{ color: feat.accent }} />
