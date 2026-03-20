@@ -1,30 +1,31 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0a;
+  --background: #080808;
   --foreground: #ffffff;
+  --red: #E8192C;
+  --red-dark: #B5121F;
+  --red-light: #FF3347;
   --gold: #D4AF37;
   --gold-light: #F0D060;
   --gold-dark: #A8882A;
-  --card-bg: #111111;
-  --card-border: #222222;
-  --muted: #999999;
+  --card-bg: #0f0f0f;
+  --card-border: #1c1c1c;
+  --muted: #888888;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-red: var(--red);
   --color-gold: var(--gold);
   --color-gold-light: var(--gold-light);
-  --color-gold-dark: var(--gold-dark);
   --color-card: var(--card-bg);
   --color-muted: var(--muted);
   --font-sans: var(--font-geist-sans);
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   background: var(--background);
@@ -32,48 +33,92 @@ body {
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
 
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #111; }
-::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: var(--gold-light); }
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #0a0a0a; }
+::-webkit-scrollbar-thumb { background: var(--red); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--red-light); }
 
-.gold-glow {
-  box-shadow: 0 0 20px rgba(212, 175, 55, 0.3), 0 0 40px rgba(212, 175, 55, 0.1);
-}
-.gold-glow-sm {
-  box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
-}
-.gold-text-glow {
-  text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
-}
+/* ── Glow utilities ─────────────────────────── */
+.red-glow   { box-shadow: 0 0 25px rgba(232,25,44,0.35), 0 0 50px rgba(232,25,44,0.12); }
+.red-glow-sm { box-shadow: 0 0 12px rgba(232,25,44,0.25); }
+.red-text-glow { text-shadow: 0 0 24px rgba(232,25,44,0.6); }
+.gold-glow  { box-shadow: 0 0 20px rgba(212,175,55,0.3), 0 0 40px rgba(212,175,55,0.1); }
+.gold-glow-sm { box-shadow: 0 0 10px rgba(212,175,55,0.2); }
+.gold-text-glow { text-shadow: 0 0 20px rgba(212,175,55,0.5); }
+
+/* ── Section divider (red → gold) ───────────── */
 .section-divider {
-  width: 60px;
+  width: 70px;
   height: 3px;
-  background: linear-gradient(90deg, #D4AF37, #F0D060);
+  background: linear-gradient(90deg, #E8192C, #D4AF37, #F0D060);
   margin: 0 auto 1.5rem;
   border-radius: 2px;
 }
 
-.swiper-pagination-bullet { background: #D4AF37 !important; opacity: 0.4 !important; }
-.swiper-pagination-bullet-active { opacity: 1 !important; background: #D4AF37 !important; }
-.swiper-button-next, .swiper-button-prev { color: #D4AF37 !important; }
+/* ── Background patterns ────────────────────── */
+.bg-dots {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+.bg-diagonal {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 18px,
+    rgba(255,255,255,0.018) 18px,
+    rgba(255,255,255,0.018) 19px
+  );
+}
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
 
+/* ── Buttons ────────────────────────────────── */
 .btn-whatsapp {
   background-color: #25D366;
-  color: white;
-  transition: background-color 0.2s;
+  color: #fff;
+  transition: background-color 0.2s, transform 0.2s;
 }
-.btn-whatsapp:hover { background-color: #1da851; }
+.btn-whatsapp:hover { background-color: #1da851; transform: translateY(-1px); }
+
+.btn-red {
+  background: linear-gradient(135deg, #E8192C, #FF3347);
+  color: #fff;
+  font-weight: 700;
+  transition: all 0.2s;
+}
+.btn-red:hover {
+  background: linear-gradient(135deg, #FF3347, #E8192C);
+  box-shadow: 0 0 22px rgba(232,25,44,0.45);
+  transform: translateY(-1px);
+}
 
 .btn-gold {
   background: linear-gradient(135deg, #D4AF37, #F0D060);
-  color: #0a0a0a;
+  color: #080808;
   font-weight: 700;
   transition: all 0.2s;
 }
 .btn-gold:hover {
   background: linear-gradient(135deg, #F0D060, #D4AF37);
-  box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+  box-shadow: 0 0 20px rgba(212,175,55,0.4);
+  transform: translateY(-1px);
+}
+
+.btn-outline-red {
+  border: 2px solid #E8192C;
+  color: #E8192C;
+  background: transparent;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+.btn-outline-red:hover {
+  background: rgba(232,25,44,0.1);
+  box-shadow: 0 0 15px rgba(232,25,44,0.25);
   transform: translateY(-1px);
 }
 
@@ -85,7 +130,25 @@ body {
   transition: all 0.2s;
 }
 .btn-outline-gold:hover {
-  background: rgba(212, 175, 55, 0.1);
-  box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+  background: rgba(212,175,55,0.1);
+  box-shadow: 0 0 15px rgba(212,175,55,0.2);
   transform: translateY(-1px);
 }
+
+/* ── Swiper overrides ───────────────────────── */
+.swiper-pagination-bullet { background: #E8192C !important; opacity: 0.35 !important; }
+.swiper-pagination-bullet-active { opacity: 1 !important; background: #E8192C !important; }
+.swiper-button-next, .swiper-button-prev { color: #E8192C !important; }
+
+/* ── Pulse animation for Hero orbs ─────────── */
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50%       { opacity: 0.75; transform: scale(1.06); }
+}
+.animate-pulse-slow { animation: pulse-slow 6s ease-in-out infinite; }
+
+@keyframes pulse-slow2 {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50%       { opacity: 0.6; transform: scale(1.08); }
+}
+.animate-pulse-slow2 { animation: pulse-slow2 8s ease-in-out infinite; }

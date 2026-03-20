@@ -30,24 +30,31 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#0a0a0a]/95 backdrop-blur-md shadow-lg shadow-black/50"
+          ? "bg-[#080808]/96 backdrop-blur-md shadow-xl shadow-black/60 border-b border-[#E8192C]/20"
           : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
+
           {/* Logo */}
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="flex flex-col leading-none text-left"
           >
-            <span
-              className="text-xl font-black tracking-widest gold-text-glow"
-              style={{ color: "#D4AF37" }}
-            >
-              MUTHWA
-            </span>
-            <span className="text-[10px] font-semibold tracking-[0.25em] text-gray-300 uppercase">
+            <div className="flex items-center gap-1.5">
+              <span
+                className="text-xl font-black tracking-widest gold-text-glow"
+                style={{ color: "#D4AF37" }}
+              >
+                MUTHWA
+              </span>
+              <span
+                className="w-2 h-2 rounded-full flex-shrink-0"
+                style={{ background: "#E8192C", boxShadow: "0 0 6px #E8192C" }}
+              />
+            </div>
+            <span className="text-[10px] font-semibold tracking-[0.25em] text-gray-400 uppercase">
               Premium Car Wash
             </span>
           </button>
@@ -58,9 +65,10 @@ export default function Navbar() {
               <button
                 key={link.href}
                 onClick={() => handleNav(link.href)}
-                className="text-sm font-medium text-gray-300 hover:text-[#D4AF37] transition-colors tracking-wide"
+                className="text-sm font-medium text-gray-300 hover:text-white transition-colors tracking-wide relative group"
               >
                 {link.label}
+                <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-[#E8192C] transition-all duration-300 group-hover:w-full rounded-full" />
               </button>
             ))}
           </div>
@@ -72,13 +80,13 @@ export default function Navbar() {
             rel="noopener noreferrer"
             className="hidden md:flex items-center gap-2 btn-whatsapp px-4 py-2 rounded-full text-sm font-semibold"
           >
-            <MessageCircle size={16} />
+            <MessageCircle size={15} />
             076 783 8899
           </a>
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden text-gray-300 hover:text-[#D4AF37] transition-colors"
+            className="md:hidden text-gray-300 hover:text-[#E8192C] transition-colors"
             onClick={() => setOpen(!open)}
             aria-label="Toggle menu"
           >
@@ -89,12 +97,12 @@ export default function Navbar() {
 
       {/* Mobile drawer */}
       {open && (
-        <div className="md:hidden bg-[#0d0d0d] border-t border-[#222] px-4 py-6 flex flex-col gap-4">
+        <div className="md:hidden bg-[#0a0a0a] border-t border-[#E8192C]/20 px-4 py-6 flex flex-col gap-4">
           {navLinks.map((link) => (
             <button
               key={link.href}
               onClick={() => handleNav(link.href)}
-              className="text-base font-medium text-gray-200 hover:text-[#D4AF37] transition-colors text-left py-1"
+              className="text-base font-medium text-gray-200 hover:text-[#E8192C] transition-colors text-left py-1 border-b border-[#1a1a1a] last:border-0"
             >
               {link.label}
             </button>
